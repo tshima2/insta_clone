@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="isg_feed_show_container">
+
+  <div class="isg_feed_show_image_area">
+    <%= image_tag(@feed.image.url, class:"isg_feed_image") %>
+    <%= link_to 'Edit', edit_feed_path(@feed) %> |
+    <%= link_to 'Back', feeds_path %>
+  </div>
+
+  <div class="isg_feed_show_comment_area">
+    <% @comments.each do |comment| %>
+    <div class="isg_feed_show_comment_block">
+      <span class="isg_feed_show_menu">...</span>
+      <ul class="isg_feed_show_menu_list">
+        <li><a href="#" ><span class="ui-icon ui-icon-circle-arrow-e"></span>編集</a></li>
+        <li><a href="#" ><span class="ui-icon ui-icon-trash"></span>削除</a></li>
+      </ul>
+      <div class="isg_feed_show_comment_text"><%= comment.content %></div>
+    </div>
+    <% end %>
+    
+    <div class="isg_feed_show_comment_menu">
+      <div class="isg_feed_show_favorites_area">
+	<%= content_tag(:span, '', class:"ui-icon ui-icon-heart")+"#{@feed.favorites.count}件" %>
+      </div>
+      <%= text_area_tag(:content, '', size:"64x1", placeholder:"コメントを追加", readonly: true) %>
+      <button class="isg_feed_show_comment_button">投稿する</button>
+    </div>
+  </div>
+
+</div>
+<%= javascript_include_tag "feeds_show.js" %>
+
+

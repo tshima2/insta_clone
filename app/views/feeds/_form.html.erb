@@ -1,0 +1,26 @@
+<%= form_with(model: feed, local: true) do |form| %>
+
+<% if feed.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+  <ul>
+    <% feed.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class='isg_feed_container'>
+  <div class='isg_feed_image_area'>
+    <% if @feed.image.present? %>
+      <%= image_tag(@feed.image.url, class:'isg_feed_image') %>
+    <% end %>
+  </div>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.submit(id: 'isg_feed_new_submit_button', value: '投稿する') %>
+  <!-- <div class="actions"><%= form.submit %></div>  -->
+</div>      
+<% end %>

@@ -1,0 +1,39 @@
+class FavoritesController < ApplicationController
+
+  def new
+    @favorite=Favorite.new
+  end
+
+  def create
+    byebug
+
+    @favorite = Favorite.new(favorite_params)
+    if(@favorite.save)
+      redirect_to feed_path(@favorite.feed.id), notice: "Favorite successfully created."
+    else
+      flash[:norice]=t('favorite.save_error')
+      redirect_to feed_path(@favorite.feed.id)
+    end
+  end
+
+  def destroy
+    byebug
+
+    if Favorite.favorites.find_by(params[:favorite][:user_id]).present?
+      @favorite=@favorites.find_by(params[:favorite][:user_id]).find_by(params[:favorite][:feed_id])
+      if @favorite.present? then notice='your favorite successfully destroyed.'
+      else notice='your favorite to this feed is NOT FOUND.'
+      end
+    else
+      notice='your favorite to this feed is NOT FOUND.'
+    end
+    redirect_to feed_path(@favorite.feed_id), notice: notice;
+  end
+
+  private
+  def favorite_params
+    params.require(:favorite).permit(:user_id, :feed_id)
+    #params.require(:favorite).permit(favorite: [:user_id, :feed_id]) 
+
+  end
+end

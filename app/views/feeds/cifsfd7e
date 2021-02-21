@@ -1,0 +1,28 @@
+<h1>New Feed</h1>
+
+<%= form_with( model: @feed, local: true) do |form| %>
+<header>
+  <% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @article.errors.count %>件のエラーがあります</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>      	  
+    </ul>
+  </div>
+  <% end %>      
+</header>
+
+
+<form_with <@feed, 
+<div class='isg_feed_container'>
+  <div class='isg_feed_image_area>  
+    <%= image_tag(@feed.image.url, class:'isg_feed_image') %>
+  </div>
+
+      
+
+<%= render 'form', feed: @feed %>
+
+<%= link_to 'Back', feeds_path %>

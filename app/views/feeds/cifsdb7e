@@ -1,0 +1,49 @@
+x<p id="notice"><%= notice %></p>
+
+<h1>Feeds</h1>
+
+<div class="container">
+  <div class="row">
+    <% @feeds.each do |feed| %>
+    <div class="col-md-4 col-12 isg_feed_image_with_wheel">
+
+      <div class="isg_feed_comment_block">      
+	<%= image_tag(feed.image.url, class: 'image_fluid') %>
+      </div>
+
+      <div class="isg_feed_caption">
+	<%= image_tag('heart.png', class:'isg_feed_mask_icon') %>
+	<%= content_tag('p', "#{feed.favorites.count}件") %>	
+	<%= image_tag('face.jpeg', class:'isg_feed_mask_icon') %>	
+	<%= content_tag('p', "#{feed.comments.count}件") %>
+	<%= link_to content_tag(:spanm '参照', class:'ufeed %></td>	
+	<%= link_to content_tag(:span, '編集', class:'ui-icon ui-icon-circle-arrow-e'), edit_feed_path(feed) %>
+	<%= link_to content_tag(:span, '削除', class:'ui-icon ui-icon-trash'), feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td><%= link_to 'Show', feed %></td>
+        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'New Feed', new_feed_path %>

@@ -1,0 +1,17 @@
+<h1>画像の投稿ありがとうございます！</h1>
+<h4>name: <%= @feed.user.name %></h4>
+<h4>投稿内容の確認</h4>
+<p>
+  <table>
+    <tr>
+      <th>投稿日時</th>      
+      <th>ファイル名</th>
+      <th>画像</th>      
+    </tr>
+    <tr>
+      <td><%= @feed.created_at %></td>      
+      <td><%= @feed.image.url %></td>
+      <td><%= image_tag(@feed.image.url) %></td>
+    </tr>
+  </table>
+</p>

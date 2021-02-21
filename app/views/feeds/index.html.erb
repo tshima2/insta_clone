@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feeds</h1>
+
+<div class="container">
+  <div class="row">
+
+    <% @feeds.each do |feed| %>
+    <div class="col-md-4 col-12 isg_feed_image_with_wheel">
+
+      <div class="isg_feed_comment_block">      
+	<%= image_tag(feed.image.url, class: 'image_fluid') %>
+	<div>
+	  <table><tr>
+              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-heart')+"#{feed.favorites.count}件" %></td>
+              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-comment')+"#{feed.comments.count}件" %></td>	      
+	      <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+'参照', feed %></td>
+
+	      <% if current_user.id == feed.user_id %>
+	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+'編集', edit_feed_path(feed) %></td>
+	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-trash')+'削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      <% end %>
+
+	  </tr></table>
+	</div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

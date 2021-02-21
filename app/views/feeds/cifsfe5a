@@ -1,0 +1,32 @@
+
+<%= form_with( model: @feed, local: true) do |form| %>
+<header>
+  <% if @feed.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @feed.errors.count %>件のエラーがあります</h2>
+    <ul>
+      <% @feed.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>      	  
+    </ul>
+  </div>
+  <% end %>      
+</header>
+
+<h2>New Feed</h2>
+
+<div class='isg_feed_container'>
+
+  <div class='isg_feed_image_area>  
+    <%= image_tag(@feed.image, class:'isg_feed_image') %>
+  </div>
+
+  <%= form.file_field :image %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.submit(id: 'isg_feed_new_submit_button', value: choose_new_or_edit) %>  
+
+</div>      
+
+<%= render 'form', feed: @feed %>
+
+<%= link_to 'Back', feeds_path %>

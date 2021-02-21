@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
 
   <body>
@@ -14,13 +16,57 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", sessions_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_sessions_path %>
-    <% end %>
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <!-- 2.ヘッダ情報 -->
+    <div class="navbar-header">
+      <a class="navbar-brand">Instagram-Clone Work.</a>
+    </div>
+
+    <!-- 3.リストの配置 -->
+    <ul class="nav navbar-nav">
+
+      <% if logged_in? %>      
+
+      <li>
+        <!-- <a class="nav-link" href="#">ホーム</a> -->
+	<%= link_to "Home", feeds_path(current_user.id), data: {class: 'nav-link'} %>		
+      </li>
+      <li>
+        <!-- <a class="nav-link" href="#">ホーム</a> -->
+	<%= link_to "Favorite Feeds", favorite_feeds_path(current_user.id), data: {class: 'nav-link'} %>		
+      </li>
+      <li>
+        <!-- <a class="nav-link" href="#">新規投稿</a> -->
+	<%= link_to "New Feed", new_feed_path, data: {class: 'nav-link'} %>			
+      </li>
+      <li class="active">
+        <!-- <a class="nav-link" href="#">プロフィール</a> -->	
+	<%= link_to "Profile", user_path(current_user.id), data: {class: 'nav-link'} %>	
+      </li>
+      <li>
+        <!-- <a class="nav-link" href="#">ログアウト</a> -->	
+	<%= link_to "Logout", sessions_path(current_user.id), method: :delete, data: {class: 'nav-link'} %>
+      </li>
+
+      <% else %>
+
+      <li>
+        <!-- <a class="nav-link" href="#">新規登録</a> -->
+	<%= link_to "Sign up", new_user_path, data: {class: 'nav-link'} %>
+
+      </li>
+      <li>
+        <!-- <a class="nav-link" href="#">ログイン</a> -->
+	<%= link_to "Login", new_sessions_path, data: {class: 'nav-link'} %>
+      </li>
+
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
 
     <%= yield %>
   </body>
