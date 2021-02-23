@@ -1,2 +1,2 @@
-I18n.config.available_locales = ENV['locale']
-I18n.default_locale = ENV['locale']
+I18n.config.available_locales = :en
+I18n.default_locale = :en
