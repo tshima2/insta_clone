@@ -25,3 +25,15 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# dotenv-rails
+.env
+
+# cifs temporary files
+/cifs*
+
+# .gitignore file
+.gitignore
+
+# uploaded files in development
+/public/uploads/

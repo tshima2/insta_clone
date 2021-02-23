@@ -1,6 +1,6 @@
-<h1>Editing Feed</h1>
+<h1><%= t('feeds.label_title_edit') %></h1>
 
 <%= render 'form', feed: @feed %>
 
-<%= link_to 'Show', @feed %> |
-<%= link_to 'Back', feeds_path %>
+<%= link_to t('feeds.label_refer'), @feed %> |
+<%= link_to t('feeds.label_back'), feeds_path %>

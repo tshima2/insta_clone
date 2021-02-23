@@ -12,9 +12,12 @@
   </head>
 
   <body>
+<!--    
     <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+    <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
+-->
+    <p id="notice"><%= notice %></p>
 
 <nav class="navbar navbar-default">
   <div class="container">
@@ -30,36 +33,29 @@
       <% if logged_in? %>      
 
       <li>
-        <!-- <a class="nav-link" href="#">ホーム</a> -->
-	<%= link_to "Home", feeds_path(current_user.id), data: {class: 'nav-link'} %>		
+	<%= link_to t('application.label_home'), feeds_path(current_user.id), data: {class: 'nav-link'} %>		
       </li>
       <li>
-        <!-- <a class="nav-link" href="#">ホーム</a> -->
-	<%= link_to "Favorite Feeds", favorite_feeds_path(current_user.id), data: {class: 'nav-link'} %>		
+	<%= link_to t('application.label_favorite_feeds'), favorite_feeds_path(current_user.id), data: {class: 'nav-link'} %>		
       </li>
       <li>
-        <!-- <a class="nav-link" href="#">新規投稿</a> -->
-	<%= link_to "New Feed", new_feed_path, data: {class: 'nav-link'} %>			
-      </li>
-      <li class="active">
-        <!-- <a class="nav-link" href="#">プロフィール</a> -->	
-	<%= link_to "Profile", user_path(current_user.id), data: {class: 'nav-link'} %>	
+	<%= link_to t('application.label_new_feed'), new_feed_path, data: {class: 'nav-link'} %>			
       </li>
       <li>
-        <!-- <a class="nav-link" href="#">ログアウト</a> -->	
-	<%= link_to "Logout", sessions_path(current_user.id), method: :delete, data: {class: 'nav-link'} %>
+	<%= link_to t('application.label_profile'), user_path(current_user.id), data: {class: 'nav-link'} %>	
+      </li>
+      <li>
+	<%= link_to t('application.label_logout'), sessions_path(current_user.id), method: :delete, data: {class: 'nav-link'} %>
       </li>
 
       <% else %>
 
       <li>
-        <!-- <a class="nav-link" href="#">新規登録</a> -->
-	<%= link_to "Sign up", new_user_path, data: {class: 'nav-link'} %>
+	<%= link_to t('application.label_signup'), new_user_path, data: {class: 'nav-link'} %>
 
       </li>
       <li>
-        <!-- <a class="nav-link" href="#">ログイン</a> -->
-	<%= link_to "Login", new_sessions_path, data: {class: 'nav-link'} %>
+	<%= link_to t('application.label_login'), new_sessions_path, data: {class: 'nav-link'} %>
       </li>
 
       <% end %>

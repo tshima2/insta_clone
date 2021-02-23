@@ -1,7 +1,7 @@
 
-<h2>New Feed</h2>
+<h2><%= t('feeds.label_title_new') %></h2>
 
 <%= render 'form', feed: @feed %>
-<%= link_to 'Back', feeds_path %>
+<%= link_to t('feeds.label_back'), feeds_path %>
 
 

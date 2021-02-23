@@ -6,9 +6,9 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(favorite_params)
     if(@favorite.save)
-      notice="favorite successfully created."
+      notice=t('favorites.msg_create_success')
     else
-      notice=t('something ERROR has occured in create favorite. ')
+      notice=t('favorites.msg_create_fail')
     end
     redirect_to feed_path(@favorite.feed.id), notice: notice
   end
@@ -17,11 +17,12 @@ class FavoritesController < ApplicationController
     if @favorite=Favorite.find_by(user_id: params[:favorite][:user_id], feed_id: params[:favorite][:feed_id])
       if @favorite.present?
         @favorite.destroy
-        notice='your favorite successfully destroyed.'
-      else notice='your favorite to this feed is NOT FOUND.'
+        notice=t('favorites.msg_destroy_success')
+      else
+        notice=t('favorites.msg_destroy_fail')
       end
     else
-      notice='your favorite to this feed is NOT FOUND.'
+      notice=t('favorites.msg_destroy_fail')
     end
     redirect_to feed_path(@favorite.feed_id), notice: notice
   end

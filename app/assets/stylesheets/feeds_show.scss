@@ -75,6 +75,8 @@ body {
   height: 128px;
   border: 2px groove;
   margin-bottom: 10px;
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 
 .ui-menu {

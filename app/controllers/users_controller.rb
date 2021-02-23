@@ -22,10 +22,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to edit_user_path, notice: "投稿を編集しました!"
+    if @user.update(user_params) && (@user.id == current_user.id)
+      redirect_to edit_user_path, notice: t('users.msg_update_success')
     else
-      notice='保存に失敗しました'
+      notice=t('users.msg_update_success')
       render :edit
     end
   end

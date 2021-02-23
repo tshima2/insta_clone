@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <div class="isg_feed_show_container">
 
@@ -11,7 +11,7 @@
       <%= form_with(model: @favorite, url: favorite_path, method: :delete, local: true) do |form| %>
         <%= form.hidden_field :user_id, value: current_user.id%>
         <%= form.hidden_field :feed_id, value: @feed.id %>                
-        <%= form.submit "お気に入り解除" %>
+        <%= form.submit t('feeds.label_favorites_off') %>
       <% end %>	
 
       <% else %>
@@ -20,38 +20,42 @@
       <%= form_with(model: @favorite, url: favorites_path, local:true) do |form| %>
         <%= form.hidden_field :user_id, value: current_user.id%>
         <%= form.hidden_field :feed_id, value: @feed.id %>                
-        <%= form.submit "お気に入りする" %>
+        <%= form.submit t('feeds.label_favorites_on') %>
       <% end %>		
 
     <% end %>
 
     <% if (@feed.user_id == current_user.id) %>
-      <%= link_to 'Edit', edit_feed_path(@feed) %> |
+      <%= link_to t('feeds.label_edit'), edit_feed_path(@feed) %> |
     <% end %>
-    <%= link_to 'Back', feeds_path %>
+    <%= link_to t('feeds.label_back'), feeds_path %>
   </div>
 
   <div class="isg_feed_show_comment_area">
     <% @comments.each do |comment| %>
     <div class="isg_feed_show_comment_block">
+
+      <% if comment.user_id == current_user.id %>
       <span class="isg_feed_show_menu">...</span>
       <ul class="isg_feed_show_menu_list">
-        <li><a href="#" ><span class="ui-icon ui-icon-circle-arrow-e"></span>編集</a></li>
-        <li><a href="#" ><span class="ui-icon ui-icon-trash"></span>削除</a></li>
+        <li><%= link_to(content_tag(:span, '', class:"ui-icon ui-icon-circle-arrow-e")+t('feeds.label_edit'), edit_comment_path(@comment.id)) %></li>
+        <li><%= link_to(content_tag(:span, '', class:"ui-icon ui-icon-trash")+t('feeds.label_delete'), comment_path(@comment.id), method: :delete) %></li>
       </ul>
+      <% end %>
+      
       <div class="isg_feed_show_comment_text"><%= comment.content %></div>
     </div>
     <% end %>
     
     <div class="isg_feed_show_comment_menu">
       <div class="isg_feed_show_favorites_area">
-        <%= content_tag(:span, '', class:"glyphicon glyphicon-heart")+"#{@favorites.count}件" %>
+        <%= content_tag(:span, '', class:"glyphicon glyphicon-heart")+t('feeds.label_favorites', num: @favorites.count) %>
       </div>
       <%= form_with(model: @comment, url: comments_path, local: true, method: :post) do |form| %>
-        <%= form.text_area(:content, size:"64x1", placeholder:"コメントを追加") %>
+        <%= form.text_area(:content, size:"64x1", placeholder: t('feeds.label_draft_comment')) %>
         <%= form.hidden_field(:user_id, value: current_user.id) %>
         <%= form.hidden_field(:feed_id, value: @feed.id) %>
-	<%= form.submit(class: "isg_feed_show_comment_button", value: "投稿する") %>
+	<%= form.submit(class: "isg_feed_show_comment_button", value: t('feeds.label_post_comment')) %>
       <% end %>
     </div>
 

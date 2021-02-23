@@ -16,3 +16,11 @@
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
 //= require_tree .
+$(function() {
+    $('.navbar-nav li').on('click', function(e) {
+	let $this=$(this);
+	//$(".navbar-nav li").removeClass("active");
+	$this.closest('ul').find("li").removeClass("active");
+	$this.addClass("active");
+    });
+});

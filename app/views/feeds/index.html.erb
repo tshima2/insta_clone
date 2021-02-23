@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Feeds</h1>
+<h1><%= t('feeds.label_title_index') %></h1>
 
 <div class="container">
   <div class="row">
@@ -12,13 +12,13 @@
 	<%= image_tag(feed.image.url, class: 'image_fluid') %>
 	<div>
 	  <table><tr>
-              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-heart')+"#{feed.favorites.count}件" %></td>
-              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-comment')+"#{feed.comments.count}件" %></td>	      
-	      <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+'参照', feed %></td>
+              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-heart') + t('feeds.label_favorites', num: feed.favorites.count) %></td>
+              <td><%= content_tag(:span, '', class:'ui-icon ui-icon-comment') + t('feeds.label_comments', num: feed.comments.count) %></td>	      
+	      <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+t('feeds.label_refer'), feed %></td>
 
 	      <% if current_user.id == feed.user_id %>
-	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+'編集', edit_feed_path(feed) %></td>
-	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-trash')+'削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-circle-arrow-e')+t('feeds.label_edit'), edit_feed_path(feed) %></td>
+	        <td><%= link_to content_tag(:span, '', class:'ui-icon ui-icon-trash')+t('feeds.label_delete'), feed, method: :delete, data: { confirm: t('feeds.msg_confirm_delete') } %></td>
 	      <% end %>
 
 	  </tr></table>

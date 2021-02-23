@@ -31,3 +31,67 @@
 
 en:
   hello: "Hello world"
+
+  application:
+    label_home: 'Home'
+    label_favorite_feeds: 'Favorite Feeds'
+    label_new_feed: 'New Feed'
+    label_profile: 'Profile'    
+    label_logout: 'Log-out'
+    label_signup: 'Sign-up'        
+    label_login: 'Log-in'
+  users:
+    email: 'email'
+    profile_image: 'profile image'
+    title_page: "%{name} Page"
+    log_in: 'Log in'
+    label_edit: 'Edit'
+    label_back: 'Back'
+    label_update: 'Update my account'
+    label_title_confirm: 'Confirm Edit'
+    label_upload_image: 'Upload'
+    msg_update_success: 'user-data successfully updated.'
+    msg_update_fail: 'update user-data is FAILED.'    
+  feeds:
+    label_title_index: 'Feeds'
+    label_title_new: 'New Feed'
+    label_title_edit: 'Edit Feed'
+    label_title_show: 'Show Feed'                
+    label_favorites: "%{num} Favorites"
+    label_comments: "%{num} Comments"
+    label_refer: 'Show'
+    label_back: 'Back'
+    label_edit: 'Edit'
+    label_delete: 'Delete'
+    label_favorites_on: 'Add to Favorites'
+    label_favorites_off: 'Remove from Favorites'
+    label_draft_comment: 'Draft Comment'
+    label_post_comment: 'Post'
+    label_post: 'Post'
+    label_new_guide: 'Select image file for upload.'    
+    msg_confirm_delete: 'Delete this comment?'
+    msg_confirm_post: 'Post this image?'
+    msg_create_feed_success: 'Feed was successfully created.'
+    msg_update_feed_success: 'Feed was successfully updated.'
+    msg_destroy_feed_success: 'Feed was successfully destroyed.'       
+  comments:
+    label_title_edit: 'Edit Comment'
+    label_form_submit: 'Save Changes'
+    label_view_back: 'Back'
+    label_edit_update: 'Save Changes'
+    label_edit_back: 'Back'    
+    msg_content_empty: 'empty comments will not be accepted.'
+    msg_create_success: 'comment has successfully created.'
+    msg_create_fail: 'an ERROR has occured when saving the comment.'
+    msg_update_success: 'comment has successfully updated.'
+    msg_update_fail: 'somthing ERROR has occured in update-comment.'
+    msg_destroy_success: 'your comment successfully destroyed.'
+    msg_destroy_fail: 'your comment to this feed is NOT FOUND.'
+  favorites:
+    msg_create_success: 'favorite successfully created.'
+    msg_create_fail: 'something ERROR has occured in create favorite.'
+    msg_destroy_success: 'your favorite successfully destroyed.'
+    msg_destroy_fail: 'your favorite to this feed is NOT FOUND.'
+  notice:
+    login_needed: 'Login is needed.'
+     

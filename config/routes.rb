@@ -9,11 +9,17 @@ Rails.application.routes.draw do
 
   # get 'sessions/new'
   resource :sessions, only: [:new, :create, :destroy]
-  resources :feeds
 
-  resources :comments, only:[:new, :create, :destroy]
+  resources :feeds do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :comments, only:[:new, :create, :destroy, :edit, :update]
   resources :favorites, only:[:new, :create, :destroy]
 
+  get '/', to: 'feeds#index'  
   get '/users/:id/favorites', to: 'feeds#index', as: 'favorite_feeds'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

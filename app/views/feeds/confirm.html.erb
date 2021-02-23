@@ -1,0 +1,28 @@
+<h3><%= t('feeds.msg_confirm_post') %></h3>
+
+<%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
+<div class='isg_feed_container'>
+  <div class='isg_feed_image_area'>
+    <!-- 確認画面でアップロードした画像を表示させるための記述 -->    
+    <% if @feed.image.present? %>
+    <%= image_tag(@feed.image.url, class:'isg_feed_image') %>
+    <%= form.hidden_field :image_cache %>    
+    <% end %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+</div>
+<%= form.submit t('feeds.label_post') %>
+<% end %>
+
+<%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
+<div class='isg_feed_container'>
+  <div class='isg_feed_image_area'>
+    <%= form.hidden_field :image_cache %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+</div>
+<%= form.submit t('feeds.label_back'), name: "back" %>
+<% end %>
+
+
+</div>

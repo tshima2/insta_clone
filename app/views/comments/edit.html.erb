@@ -1,0 +1,12 @@
+<p class="notice"><%= notice %></p>
+
+<h1><%= t('comments.label_title_edit') %></h1>
+<%= form_with(model: @comment, local:true, url: comment_path, method: "put") do |form| %>
+<%= form.hidden_field(:user_id, value: @comment.user_id) %>
+<%= form.hidden_field(:feed_id, value: @comment.feed_id) %>
+<table>
+  <tr><td><%= form.text_area(:content, size: "80x5", value: @comment.content) %></td></tr>
+  <tr><td><%= form.submit t('comments.label_edit_update') %></td></tr>
+</table>
+<% end %>
+<%= link_to t('comments.label_edit_back'), feed_path(@comment.feed_id) %>

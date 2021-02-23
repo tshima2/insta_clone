@@ -28,8 +28,14 @@ class FeedsController < ApplicationController
 
   # GET /feeds/new
   def new
+#    byebug
+    
     if(current_user)
-      @feed = Feed.new
+      if params[:back]
+        @feed = Feed.new(feed_params)
+      else
+        @feed = Feed.new
+      end
     else
       authenticate_user
     end
@@ -39,13 +45,19 @@ class FeedsController < ApplicationController
   def edit
   end
 
+  def confirm
+#    byebug
+    
+    @feed = Feed.new(feed_params)    
+  end
+  
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save
         FeedsMailer.feeds_mail(@feed).deliver
-        format.html { redirect_to @feed, notice: "Feed was successfully created." }
+        format.html { redirect_to @feed, notice: t('feeds.msg_create_feed_success') }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,8 +69,8 @@ class FeedsController < ApplicationController
   # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
     respond_to do |format|
-      if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: "Feed was successfully updated." }
+      if @feed.update(feed_params) && (@feed.user_id == current_user.id)
+        format.html { redirect_to @feed, notice: t('feeds.msg_update_feed_success') }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,7 +83,7 @@ class FeedsController < ApplicationController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: "Feed was successfully destroyed." }
+      format.html { redirect_to feeds_url, notice: t('feeds.msg_destroy_feed_success') }
       format.json { head :no_content }
     end
   end
