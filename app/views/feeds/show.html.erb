@@ -3,7 +3,8 @@
 <div class="isg_feed_show_container">
 
   <div class="isg_feed_show_image_area">
-    <%= image_tag(@feed.image.url, class:"isg_feed_image") %>
+    <%= image_tag(@feed.image.url, class:"isg_feed_show_image") %>
+    <%= text_area_tag(:content, @feed.content, size: "40x4") %>    
     <p>[posted by <a href="<%= user_path(@feed.user_id) %>"><strong><%= @feed.user.name %></strong></a> at <%= @feed.created_at.strftime("%Y-%m-%d(%a) %H:%M:%S %Z") %>]</p>
     <% if (@favorite.present? && (@favorite.user_id == current_user.id)) %>
       <%= content_tag(:span, '', class:"glyphicon glyphicon-heart") %>

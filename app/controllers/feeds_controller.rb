@@ -92,6 +92,6 @@ class FeedsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def feed_params
-    params.require(:feed).permit(:user_id, :image, :image_cache)
+    params.require(:feed).permit(:user_id, :image, :image_cache, :content)
   end
 end

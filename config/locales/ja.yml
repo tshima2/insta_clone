@@ -19,7 +19,9 @@ ja:
     label_title_confirm: '確認画面'
     label_upload_image: '登録する'
     label_signup: '新規登録'
-    label_home: 'ホーム'        
+    label_home: 'ホーム'
+    label_content: '内容:'
+    label_image: '画像:'        
     msg_update_success: 'ユーザ情報を更新しました'
     msg_update_fail: 'ユーザ情報更新に失敗しました'        
   feeds:

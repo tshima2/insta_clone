@@ -13,8 +13,15 @@
 <% end %>
 
 <div class='isg_feed_container'>
-  <%= t('feeds.label_new_guide') %>
+  
+  <div>  
+<!--    <%= form.label :content, value: t('feeds.label_content') %> -->
+    <%= form.label :content %>    
+    <%= form.text_area(:content, size:"64x4") %>
+  </div>
   <div class='isg_feed_image_area'>
+<!--    <%= form.label :image, value: t('feeds.label_image') %> -->
+    <%= form.label :image %>        
     <% if @feed.image.present? %>
     <%= image_tag(@feed.image.url, class:'isg_feed_image') %>
     <% end %>

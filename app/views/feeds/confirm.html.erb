@@ -2,6 +2,11 @@
 
 <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
 <div class='isg_feed_container'>
+  <div>  
+<!--    <%= form.label :content, value: t('feeds.label_content') %> -->
+    <%= form.label :content %>    
+    <%= form.text_area(:content, size:"64x4") %>
+  </div>
   <div class='isg_feed_image_area'>
     <!-- 確認画面でアップロードした画像を表示させるための記述 -->    
     <% if @feed.image.present? %>
