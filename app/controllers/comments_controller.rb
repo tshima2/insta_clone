@@ -20,8 +20,6 @@ class CommentsController < ApplicationController
   end
 
   def update
-    byebug
-
     if(@comment.update(comment_params))
       notice=t('comments.msg_update_success')
     else

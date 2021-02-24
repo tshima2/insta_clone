@@ -18,7 +18,8 @@ ja:
     label_update: '更新する'
     label_title_confirm: '確認画面'
     label_upload_image: '登録する'
-    label_signup: '新規登録'    
+    label_signup: '新規登録'
+    label_home: 'ホーム'        
     msg_update_success: 'ユーザ情報を更新しました'
     msg_update_fail: 'ユーザ情報更新に失敗しました'        
   feeds:

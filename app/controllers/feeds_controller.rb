@@ -28,8 +28,6 @@ class FeedsController < ApplicationController
 
   # GET /feeds/new
   def new
-#    byebug
-    
     if(current_user)
       if params[:back]
         @feed = Feed.new(feed_params)
@@ -46,11 +44,9 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-#    byebug
-    
     @feed = Feed.new(feed_params)    
   end
-  
+
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)

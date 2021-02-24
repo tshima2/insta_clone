@@ -51,7 +51,8 @@ en:
     label_update: 'Update my account'
     label_title_confirm: 'Confirm Edit'
     label_upload_image: 'Upload'
-    label_signup: 'SignUp'        
+    label_signup: 'SignUp'
+    label_home: 'Home'
     msg_update_success: 'user-data successfully updated.'
     msg_update_fail: 'update user-data is FAILED.'    
   feeds:
