@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    user=User.new(name: "shima", email: "shima@cae.cs.fujitsu.co.jp", password: "tshima")
+    user=User.new
   end
 
   def create
@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #ログイン成功した場合
       session[:user_id] = user.id
-      redirect_to user_path(user.id)
+      #redirect_to user_path(user.id)
+      redirect_to feeds_path
     else
       #ログイン失敗した場合
       flash[:danger] = 'ログインに失敗しました'

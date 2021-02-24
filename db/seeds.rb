@@ -11,7 +11,8 @@ prefix=""
 50.times do |n|
   prefix=n.to_s.rjust(2, '0')
   name="test"+prefix
-  email=name+'@example.com'
+ email=name+"@example.com"
+#  email="shima.tatsurou@gmail.com"
   password=name
   User.create!(name: name, email: email, password: password, password_confirmation: password)
 end

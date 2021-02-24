@@ -28,6 +28,7 @@
 
 # dotenv-rails
 .env
+.env.*
 
 # cifs temporary files
 /cifs*
