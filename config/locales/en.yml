@@ -42,6 +42,7 @@ en:
     label_login: 'Log-in'
   users:
     email: 'email'
+    password: 'password'    
     profile_image: 'profile image'
     title_page: "%{name} Page"
     log_in: 'Log in'
@@ -50,6 +51,7 @@ en:
     label_update: 'Update my account'
     label_title_confirm: 'Confirm Edit'
     label_upload_image: 'Upload'
+    label_signup: 'SignUp'        
     msg_update_success: 'user-data successfully updated.'
     msg_update_fail: 'update user-data is FAILED.'    
   feeds:
@@ -63,6 +65,7 @@ en:
     label_back: 'Back'
     label_edit: 'Edit'
     label_delete: 'Delete'
+    label_update: 'Update'    
     label_favorites_on: 'Add to Favorites'
     label_favorites_off: 'Remove from Favorites'
     label_draft_comment: 'Draft Comment'
